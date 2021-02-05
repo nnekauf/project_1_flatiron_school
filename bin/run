@@ -2,3 +2,4 @@
 
 require_relative("../config/enviroment")
 
+Cli.new.introduction
