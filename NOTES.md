@@ -1,14 +1,12 @@
 FIRST PROJECT NOTES
 
-NAME: SHOOTING CRIMES IN NYC REPORT APP
-OBJECTIVE: ALLOW THE USER TO RECEIVE VARIOUS INFORMATION ON SHOOTINGS that occured within the first semester of 2020 IN NYC BASED ON THE BOROUGH (AND ATTRIBUTE) THEY CHOOSE. 
-**Modification: this will show shooting crimes that occured in June 2020 which has been documentened as the most violent, by shootings, month of 2020.
-HOW: 
-	1. USER WILL BE WELCOMED: who we are, what we do, let them know we have info from 1st semester of 2020 
+NAME: Whats the Word? CLI APP
+OBJECTIVE: ALLOW THE USER TO RECEIVE VARIOUS SYNONYMS AND ANTONYMS OF A WORD OF THEIR CHOOSING IN ORDER TO EXPAND THEIR VOCABULARY.I
+	1. USER WILL BE WELCOMED: who we are, what we do, 
 	2. USER WILL BE TOLD WHAT THEY HAVE AVAILABLE TO SEE:
-	3. USER WILL BE ASKED TO GIVE BORO IN ORDER TO GET MORE SPECIFIED DATA: 
+	3. USER WILL BE ASKED TO GIVE word IN ORDER TO GET MORE SPECIFIED DATA: 
         to get started please select a borough from these options (type options) by typing its name below. (will have to account for case sensitivity)
-    4. WE GET USER INPUT AND CHECK FOR VALIDITY. 
+    4. WE GET USER INPUT AND CHECK FOR VALIDITY by making sure it is one word
 	5. IF INPUT IS VALID, WILL ASK USER TO CHOOSE MONTH BTWN JAN - JULY
     6. WE GET USER INPUT AND CHECK FOR VALIDITY.
     7. RETURN DIFFERENT SHOOTING INCIDENCES WITHIN BORO AND MONTH CHOSEN

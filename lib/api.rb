@@ -1,11 +1,11 @@
 class Api
-    # API KEY ID :  c27rrnwq3d0grh6jfcuwvyry5
-    # API KEY SECRET:  624993bfsyz0ti6akkqw0s266ict4k59saclibgos0q5i5091s
-    
-    # APP TOKEN: Af9MKKpSaCbn3WfKeNghyOyYU
-    
-    # APP TOKEN SECRET: Pa5dIyIeM028wp0hiv7IwJOLGos-TavkCDs0
-    def self.get_shootings_by_boro
+    #  Key (Thesaurus): 299e3474-8d57-473c-836c-9e5c31d32f6e
+
+# Key (Dictionary): 85a434fc-3a5d-48df-a8e0-35b0c5bd54ee
+
+#url = https://www.dictionaryapi.com/api/v3/references/thesaurus/json/umpire?key=299e3474-8d57-473c-836c-9e5c31d32f6e
+#url_interpolated = https://www.dictionaryapi.com/api/v3/references/thesaurus/json/#{word}?key=299e3474-8d57-473c-836c-9e5c31d32f6e
+    def self.get_thesaurus_by_word
 
     end
 
