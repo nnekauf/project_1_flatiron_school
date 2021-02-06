@@ -27,8 +27,8 @@ class Cli
 
     def valid_word?
          #     4. CHECK FOR VALIDITY. 
-         @word !=~ (/(\d|\s)/)  #the word is valid if it does not include spaces or a number
-                                #the word is valid if the regex does not return nil
+         #@word =~ /(\d|\s)/  #the word is valid if it does not include spaces or a number
+                                  #the word is valid if the regex does not return nil
                                     #the word is valid if the thesarus does not return an empty array
     end
 
