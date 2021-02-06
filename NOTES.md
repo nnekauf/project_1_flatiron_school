@@ -2,6 +2,7 @@ FIRST PROJECT NOTES
 
 NAME: SHOOTING CRIMES IN NYC REPORT APP
 OBJECTIVE: ALLOW THE USER TO RECEIVE VARIOUS INFORMATION ON SHOOTINGS that occured within the first semester of 2020 IN NYC BASED ON THE BOROUGH (AND ATTRIBUTE) THEY CHOOSE. 
+**Modification: this will show shooting crimes that occured in June 2020 which has been documentened as the most violent, by shootings, month of 2020.
 HOW: 
 	1. USER WILL BE WELCOMED: who we are, what we do, let them know we have info from 1st semester of 2020 
 	2. USER WILL BE TOLD WHAT THEY HAVE AVAILABLE TO SEE:
