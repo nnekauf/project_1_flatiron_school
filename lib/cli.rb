@@ -40,17 +40,37 @@ class Cli
         number = gets.strip
         case number
         when "1"
-            puts "Symonyms of (put the word chosen here) include (put synonyms of the word chosen here)"
+            puts "Symonyms of '#{new_word.name.upcase}' include '#{new_word.syns}'"
         when "2"
-            puts "Antonyms of (put the word chosen here) include (put Antonyms of the word chosen here)"
+            puts "Antonyms of '#{new_word.name.upcase}' include '#{new_word.ants}'"
         when "3"
-            puts "Words Related to (put the word chosen here) include (put Words Related to the word chosen here)"
+            puts "Words Related to '#{new_word.name.upcase}' include '#{new_word.related_words}'"
         when "4"
-            puts " A Short Definition of (put the word chosen here) is (put Short Definition of the word chosen here)"
+            puts " A Short Definition of '#{new_word.name.upcase}' is '#{new_word.short_def}'"
+        end  
+
+        puts "To know more about the word '#{new_word.name.upcase}', enter the number '1'."
+        puts "To choose a new word, enter the number '2'"
+        puts "To start from the beginning, enter the number '3'"
+        puts "To EXIT this amazing application, type '4'"
+
+        input = gets.strip
+
+        case input
+        when "1"
+            self.word_options(new_word)
+        when "2"
+            self.main_menu
+        when "3"
+            self.introduction
+        when "4"
+            self.exit
         end  
     end
     
-
+    def exit
+        puts "Thank you for using What's the Word Cli App!"
+    end
     
     
     

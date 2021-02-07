@@ -36,3 +36,5 @@ end
         #     puts "I'm sorry! It seems as though you have not entered a valid word."
         #     puts "Make sure you have spelled it correctly, are only entering one word, and do not include any numbers!"
         # end
+
+        #new word has to equal the name property in the hash in either upper or lowercase form, for examply hi.
