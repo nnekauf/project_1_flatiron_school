@@ -7,11 +7,14 @@ class Api
         url = "https://www.dictionaryapi.com/api/v3/references/thesaurus/json/#{word}?key=299e3474-8d57-473c-836c-9e5c31d32f6e"
         response = HTTParty.get(url)
         @main_hash = response[0] 
-        
-        if response.empty? #if the api does not return any results
+        #binding.pry
+        if response.empty? #if the api does not return any results, its not a real word
+            return false
+        #elsif response.flatten.include?("meta")#if api response does not have a meta class, it means they couldn't determine what the word was.
             return false
         elsif @main_hash["meta"]["id"].to_s != "#{word}" #if api returns a different word than the one requested
             return false
+            
         end
 #binding.pry
         name_hash = { } 
