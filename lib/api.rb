@@ -8,12 +8,12 @@ class Api
         response = HTTParty.get(url)
         @main_hash = response[0] 
         
-        if @main_hash["meta"]["id"].to_s != "#{word}"
+        if response.empty? 
             return false
-        elsif response.empty?
+        elsif @main_hash["meta"]["id"].to_s != "#{word}"
             return false
         end
-
+binding.pry
         name_hash = { } 
         name_hash[:name] = @main_hash["meta"]["id"]
 
