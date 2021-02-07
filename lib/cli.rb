@@ -19,10 +19,10 @@ class Cli
     def get_word
         word = gets.strip
         new_word = Api.get_thesaurus_by_word(word)
-        self.return_word_options(new_word)
+        self.word_options(new_word)
     end
 
-    def return_word_options(new_word)
+    def word_options(new_word)
         puts "You chose '#{new_word.name.upcase}'! What would you like to know about it?"
         puts "  For Synonyms of '#{new_word.name.upcase}', enter the number '1' "
         puts "  For Antonyms of '#{new_word.name.upcase}', enter the number '2' "
