@@ -61,7 +61,10 @@ class Cli
         puts "To EXIT this amazing application, type '4'"
 
         input = gets.strip
-
+        self.continue_choice(input)
+    end
+    
+    def continue_choice(input)
         case input
         when "1"
             self.word_options(new_word)
