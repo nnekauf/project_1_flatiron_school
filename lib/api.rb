@@ -1,14 +1,13 @@
-require "pry"
+
 class Api
-    #  Key (Thesaurus): 299e3474-8d57-473c-836c-9e5c31d32f6e
-    # Key (Dictionary): 85a434fc-3a5d-48df-a8e0-35b0c5bd54ee
+
 
     def self.get_thesaurus_by_word(word)
         url = "https://www.dictionaryapi.com/api/v3/references/thesaurus/json/#{word}?key=299e3474-8d57-473c-836c-9e5c31d32f6e"
         response = HTTParty.get(url)
         @main_hash = response[0] 
-        #binding.pry
-        if response.empty? #if the api does not return any results, its not a real word
+        
+        if response.empty? #if the api does not return any results, it's not a real word
             return false
         elsif @main_hash["meta"] == nil #if api response does not have a meta , it means they couldn't determine what the word was.
             return false
@@ -16,9 +15,8 @@ class Api
             return false
         elsif @main_hash["meta"]["id"].to_s != "#{word}" #if api returns a different word than the one requested
             return false
-            
         end
-#binding.pry
+
         name_hash = { } 
         name_hash[:name] = @main_hash["meta"]["id"]
         name_hash[:word] = word
@@ -59,8 +57,8 @@ class Api
             name_hash[:short_def] = "We're sorry! We couldn't find any definitions."
         end
 
-        name_hash.each do |key, value|
-            if value == "" || value == " "
+        name_hash.each do |key, value|    
+            if value == "" || value == " "      
                 value = "We're sorry! Seems like this word may not have any!"
             end
         end
