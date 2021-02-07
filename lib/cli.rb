@@ -28,16 +28,26 @@ class Cli
         puts "  For Antonyms of '#{new_word.name.upcase}', enter the number '2' "
         puts "  For Words Related to '#{new_word.name.upcase}', enter the number '3' "
         puts "  For a Short Definition of '#{new_word.name.upcase}', enter the number '4' "
-        self.get_number
+        self.return_word_attributes(new_word)
     end
 
-    def get_number
+    # def get_number
+    #     number = gets.strip
+    #     self.return_word_attributes(number)
+    # end
+
+    def return_word_attributes(new_word)
         number = gets.strip
-        self.return_word_attributes
-    end
-
-    def return_word_attributes
-
+        case number
+        when "1"
+            puts "Symonyms of (put the word chosen here) include (put synonyms of the word chosen here)"
+        when "2"
+            puts "Antonyms of (put the word chosen here) include (put Antonyms of the word chosen here)"
+        when "3"
+            puts "Words Related to (put the word chosen here) include (put Words Related to the word chosen here)"
+        when "4"
+            puts " A Short Definition of (put the word chosen here) is (put Short Definition of the word chosen here)"
+        end  
     end
     
 
