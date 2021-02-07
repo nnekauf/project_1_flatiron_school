@@ -36,11 +36,7 @@ class Cli
         self.return_word_attributes(new_word)
     end
 
-    # def get_number
-    #     number = gets.strip
-    #     self.return_word_attributes(number)
-    # end
-
+   
     def return_word_attributes(new_word)
         number = gets.strip
         case number
