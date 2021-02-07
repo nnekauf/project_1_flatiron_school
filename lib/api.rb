@@ -8,9 +8,9 @@ class Api
         response = HTTParty.get(url)
         @main_hash = response[0] 
         
-        if response.empty? 
+        if response.empty? #if the api does not return any results
             return false
-        elsif @main_hash["meta"]["id"].to_s != "#{word}"
+        elsif @main_hash["meta"]["id"].to_s != "#{word}" #if api returns a different word than the one requested
             return false
         end
 #binding.pry

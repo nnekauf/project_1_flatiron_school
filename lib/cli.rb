@@ -18,14 +18,19 @@ class Cli
 
     def get_word
         word_choice = gets.strip
-        
+
+        if "#{word_choice}" =~ /(\W)/  #if the word choice includes any nonword character
+            puts "That word was invalid, try again! Pro Tip: Avoid spaces, symbols, and numbers!"
+            self.main_menu
+        end
+
         new_word = Word.find_by_word(word_choice) || Api.get_thesaurus_by_word(word_choice)
         
-
+        
         if new_word
             self.word_options(new_word)
         else
-            puts "That word was invalid, try again! Pro Tip: Try avoiding informal words. For example, type 'Hello' instead of 'Hi'. "
+            puts "That word was invalid, try again! Pro Tip: Try avoiding spaces, numbers, symbols, and informal words. For example, type 'Hello' instead of 'Hi'. "
             self.main_menu
         end
     end
@@ -74,10 +79,13 @@ class Cli
             self.word_options(new_word)
         when "2"
             self.main_menu
-        when "3"
+        when "3"            
             self.introduction
         when "4"
             self.exit
+        else
+            puts "Uh Oh! That selection was invalid!"
+            self.continue(new_word)
         end  
     end
     
