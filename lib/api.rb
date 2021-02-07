@@ -13,7 +13,7 @@ class Api
         elsif @main_hash["meta"]["id"].to_s != "#{word}"
             return false
         end
-binding.pry
+#binding.pry
         name_hash = { } 
         name_hash[:name] = @main_hash["meta"]["id"]
 
@@ -53,6 +53,11 @@ binding.pry
             name_hash[:short_def] = "We're sorry! We couldn't find any definitions."
         end
 
+        name_hash.each do |key, value|
+            if value == "" || value == " "
+                value = "We're sorry! Seems like this word may not have any!"
+            end
+        end
         Word.new(name_hash)
     end
 

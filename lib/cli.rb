@@ -22,7 +22,7 @@ class Cli
         if new_word
             self.word_options(new_word)
         else
-            puts "That word was invalid, try again!"
+            puts "That word was invalid, try again! Pro Tip: Try avoiding informal words. For example, type 'Hello' instead of 'Hi'. "
             self.main_menu
         end
     end
