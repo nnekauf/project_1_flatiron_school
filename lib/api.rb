@@ -24,3 +24,10 @@ class Api
 
 
 end
+
+#if valid_word?
+            
+        # else
+        #     puts "I'm sorry! It seems as though you have not entered a valid word."
+        #     puts "Make sure you have spelled it correctly, are only entering one word, and do not include any numbers!"
+        # end

@@ -19,16 +19,15 @@ class Cli
     def get_word
         word = gets.strip
         new_word = Api.get_thesaurus_by_word(word)
-        #binding.pry
+        self.return_word_options(new_word)
     end
 
-    def return_word_info
-        #if valid_word?
-            puts "this will be where the thesarus will return info on this word: #{@word}."
-        # else
-        #     puts "I'm sorry! It seems as though you have not entered a valid word."
-        #     puts "Make sure you have spelled it correctly, are only entering one word, and do not include any numbers!"
-        # end
+    def return_word_options(new_word)
+        puts "You chose '#{new_word.name.upcase}'! What would you like to know about it?"
+        puts "  For Synonyms of '#{new_word.name.upcase}', enter the number '1' "
+        puts "  For Antonyms of '#{new_word.name.upcase}', enter the number '2' "
+        puts "  For Words Related to '#{new_word.name.upcase}', enter the number '3' "
+        puts "  For a Short Definition of '#{new_word.name.upcase}', enter the number '4' "
     end
 
     # def valid_word?
