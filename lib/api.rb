@@ -11,17 +11,32 @@ class Api
         url = "https://www.dictionaryapi.com/api/v3/references/thesaurus/json/#{word}?key=299e3474-8d57-473c-836c-9e5c31d32f6e"
         response = HTTParty.get(url)
         main_hash = response[0] 
+
+        rel_words = []
+        main_hash["def"][0]["sseq"][0][0][1]["rel_list"].each do |array| 
+            array.each{|hash| hash.each {|key,value| rel_words << "#{value}"}}
+        end
         
-        name_hash = {name: main_hash["meta"]["id"], syns: main_hash["meta"]["syns"], #need to go deeper to pull the attributes without the array/hash
-        ants: main_hash["meta"]["ants"],
-        related_words: main_hash["def"][0]["sseq"][0][0][1]["rel_list"], 
+        syn_words = []
+        main_hash["meta"]["syns"].each do |array|
+            array.each{|word| syn_words << word}
+        end
+
+        ant_words = []
+        main_hash["meta"]["ants"][0].each do |word|
+         ant_words << word
+        end
+        
+        name_hash = {name: main_hash["meta"]["id"], syns: syn_words.join(", "),
+        ants: ant_words.join(", "),
+        related_words: rel_words.join(", "), 
         short_def: main_hash["shortdef"][0] 
         }
-
+        binding.pry
         Word.new(name_hash)
     end
-
-
+    
+    
 
 end
 # def valid_word?

@@ -49,7 +49,7 @@ class Cli
             puts " A Short Definition of '#{new_word.name.upcase}' is '#{new_word.short_def}'"
         else
             puts "Uh Oh! That selection was invalid!"
-            self.word_options
+            self.word_options(new_word)
         end  
         self.continue(new_word)
     end
@@ -61,9 +61,9 @@ class Cli
         puts "To EXIT this amazing application, type '4'"
 
         input = gets.strip
-        self.continue_choice(input)
+        self.continue_choice(input, new_word)
     end
-    
+
     def continue_choice(input)
         case input
         when "1"
