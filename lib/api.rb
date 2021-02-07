@@ -12,7 +12,12 @@ class Api
         response = HTTParty.get(url)
         main_hash = response[0] 
         
-        name_hash = {name: main_hash["meta"]["id"], syns: main_hash["meta"]["syns"], ants: main_hash["meta"]["ants"], related_words: main_hash["def"][0]["sseq"][0][0][1]["rel_list"], short_def: main_hash["shortdef"][0] }
+        name_hash = {name: main_hash["meta"]["id"], syns: main_hash["meta"]["syns"], #need to go deeper to pull the attributes without the array/hash
+        ants: main_hash["meta"]["ants"],
+        related_words: main_hash["def"][0]["sseq"][0][0][1]["rel_list"], 
+        short_def: main_hash["shortdef"][0] 
+        }
+
         Word.new(name_hash)
     end
 

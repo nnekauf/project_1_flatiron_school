@@ -1,9 +1,5 @@
 class Cli
     
-    # def initialize
-        
-    # end
-
     def introduction
    
         puts "  Welcome to What's the Word? CLI App!"
