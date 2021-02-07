@@ -7,81 +7,118 @@ class Api
         url = "https://www.dictionaryapi.com/api/v3/references/thesaurus/json/#{word}?key=299e3474-8d57-473c-836c-9e5c31d32f6e"
         response = HTTParty.get(url)
         @main_hash = response[0] 
-    end
-
-    def valid_word?
-        if @main_hash["meta"]["id"] != "#{word}"
+        
+        if @main_hash["meta"]["id"].to_s != "#{word}"
             return false
         elsif response.empty?
             return false
-         end
-    end
+        end
 
-    def valid_rel_list?
-        @main_hash["def"][0]["sseq"][0][0][1].flatten.include?("rel_list")
-    end
+        name_hash = { } 
+        name_hash[:name] = @main_hash["meta"]["id"]
 
-    def valid_syns?
-        @main_hash["meta"].flatten.include?("syns")
-    end
-
-    def valid_ants?
-        @main_hash["meta"].flatten.include?("ants")
-    end
-
-    def valid_shortdef?
-        @main_hash.flatten.include?("shortdef")
-    end
-
-    def assign_attributes
-        name_hash = {name: @main_hash["meta"]["id"]}
-
-        if valid_rel_list?
+        if @main_hash["def"][0]["sseq"][0][0][1].flatten.include?("rel_list")
             rel_words = []
             @main_hash["def"][0]["sseq"][0][0][1]["rel_list"].each do |array| 
                 array.each{|hash| hash.each {|key,value| rel_words << "#{value}"}}
             end
-            name_hash = {related_words: rel_words.join(", ")}
+            name_hash[:related_words] =  rel_words.join(", ")
         else 
-            name_hash = {related_words: "We're sorry! We couldn't find any related words."}
+            name_hash[:related_words] = "We're sorry! We couldn't find any related words."
         end
 
-        if valid_syns?
+        if @main_hash["meta"].flatten.include?("syns")
             syn_words = []
             @main_hash["meta"]["syns"].each do |array|
                 array.each{|word| syn_words << word}
             end
-            name_hash = { syns: syn_words.join(", ")}
+            name_hash[:syns] = syn_words.join(", ")
         else
-            name_hash = {syns: "We're sorry! We couldn't find any synonyms."}
+            name_hash[:syns] = "We're sorry! We couldn't find any synonyms."
         end
 
-        if valid_ants?
+        if @main_hash["meta"].flatten.include?("ants")
             ant_words = []
             @main_hash["meta"]["ants"].each do |word| #
             ant_words << word
             end
-            name_hash = {ants: ant_words.join(", ")}
+            name_hash[:ants] = ant_words.join(", ")
         else
-            name_hash = {ants: "We're sorry! We couldn't find any antonyms."}
+            name_hash[:ants] = "We're sorry! We couldn't find any antonyms."
         end
 
-        if valid_shortdef?
-            name_hash = {short_def: @main_hash["shortdef"][0]}
+        if @main_hash.flatten.include?("shortdef")
+            name_hash[:short_def] = @main_hash["shortdef"][0]
         else
-            name_hash = {short_def: "We're sorry! We couldn't find any definitions."}
+            name_hash[:short_def] = "We're sorry! We couldn't find any definitions."
         end
-        binding.pry
+
+        Word.new(name_hash)
     end
-    
-    #Word.new(name_hash)
-         
-    
-   
-   
 
 end
+#     def valid_rel_list?
+#         @main_hash["def"][0]["sseq"][0][0][1].flatten.include?("rel_list")
+#     end
 
+#     def valid_syns?
+#         @main_hash["meta"].flatten.include?("syns")
+#     end
+
+#     def valid_ants?
+#         @main_hash["meta"].flatten.include?("ants")
+#     end
+
+#     def valid_shortdef?
+#         @main_hash.flatten.include?("shortdef")
+#     end
+
+#     def assign_attributes
+#         name_hash = {name: @main_hash["meta"]["id"]}
+
+#         if self.valid_rel_list?
+#             rel_words = []
+#             @main_hash["def"][0]["sseq"][0][0][1]["rel_list"].each do |array| 
+#                 array.each{|hash| hash.each {|key,value| rel_words << "#{value}"}}
+#             end
+#             name_hash = {related_words: rel_words.join(", ")}
+#         else 
+#             name_hash = {related_words: "We're sorry! We couldn't find any related words."}
+#         end
+
+#         if self.valid_syns?
+#             syn_words = []
+#             @main_hash["meta"]["syns"].each do |array|
+#                 array.each{|word| syn_words << word}
+#             end
+#             name_hash = { syns: syn_words.join(", ")}
+#         else
+#             name_hash = {syns: "We're sorry! We couldn't find any synonyms."}
+#         end
+
+#         if self.valid_ants?
+#             ant_words = []
+#             @main_hash["meta"]["ants"].each do |word| #
+#             ant_words << word
+#             end
+#             name_hash = {ants: ant_words.join(", ")}
+#         else
+#             name_hash = {ants: "We're sorry! We couldn't find any antonyms."}
+#         end
+
+#         if self.valid_shortdef?
+#             name_hash = {short_def: @main_hash["shortdef"][0]}
+#         else
+#             name_hash = {short_def: "We're sorry! We couldn't find any definitions."}
+#         end
+
+#         Word.new(name_hash)
+#     end
+    
+   
+
+# end
+#################
 #if valid_word?
             
         # else
@@ -122,3 +159,20 @@ end
         # related_words: rel_words.join(", "), 
         # short_def: main_hash["shortdef"][0] 
         # } 
+
+array = []
+def this_method
+    array << "first"
+        if "happy" != "y"
+            array << "no"
+        else
+            array << "happy"
+        end
+
+        if "soup" == "g"
+            array << "way"
+        else
+            array << "days"
+        end
+        array
+    end
