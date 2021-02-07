@@ -17,8 +17,14 @@ class Cli
     end
 
     def get_word
-        word = gets.strip
-        new_word = Api.get_thesaurus_by_word(word)
+        word_choice = gets.strip
+        #binding.pry
+        if Word.find_by_word(word_choice)
+            new_word = Word.find_by_word(word_choice)
+        else
+            new_word = Api.get_thesaurus_by_word(word_choice)
+        end
+
         if new_word
             self.word_options(new_word)
         else

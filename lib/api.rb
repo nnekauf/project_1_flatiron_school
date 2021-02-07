@@ -16,6 +16,7 @@ class Api
 #binding.pry
         name_hash = { } 
         name_hash[:name] = @main_hash["meta"]["id"]
+        name_hash[:word] = word
 
         if @main_hash["def"][0]["sseq"][0][0][1].flatten.include?("rel_list")
             rel_words = []
