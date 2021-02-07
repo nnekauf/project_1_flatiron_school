@@ -47,8 +47,14 @@ class Cli
             puts "Words Related to '#{new_word.name.upcase}' include '#{new_word.related_words}'"
         when "4"
             puts " A Short Definition of '#{new_word.name.upcase}' is '#{new_word.short_def}'"
+        else
+            puts "Uh Oh! That selection was invalid!"
+            self.word_options
         end  
+        self.continue(new_word)
+    end
 
+    def continue(new_word)
         puts "To know more about the word '#{new_word.name.upcase}', enter the number '1'."
         puts "To choose a new word, enter the number '2'"
         puts "To start from the beginning, enter the number '3'"
