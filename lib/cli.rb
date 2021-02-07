@@ -40,7 +40,7 @@ class Cli
         number = gets.strip
         case number
         when "1"
-            puts "Symonyms of '#{new_word.name.upcase}' include '#{new_word.syns}'"
+            puts "Synonyms of '#{new_word.name.upcase}' include '#{new_word.syns}'"
         when "2"
             puts "Antonyms of '#{new_word.name.upcase}' include '#{new_word.ants}'"
         when "3"
@@ -64,7 +64,7 @@ class Cli
         self.continue_choice(input, new_word)
     end
 
-    def continue_choice(input)
+    def continue_choice(input, new_word)
         case input
         when "1"
             self.word_options(new_word)

@@ -11,40 +11,58 @@ class Api
         url = "https://www.dictionaryapi.com/api/v3/references/thesaurus/json/#{word}?key=299e3474-8d57-473c-836c-9e5c31d32f6e"
         response = HTTParty.get(url)
         main_hash = response[0] 
+# def valid_word?
+    #the word isnt valid if the thesarus returns an empty array
+    #the word isnt valid if the name method that the thesaurs reetuns does not equal the word typed
+    #the word may not have an antonym, synonym, related word, or short definition. for example "talk" has no antonym
+    # end
+        # if main_hash["meta"]["id"] != "#{word}"
+        #     return false
+        # elsif response.empty?
+        #     return false
+    
+        # end
+#binding.pry
+        if !main_hash["def"][0]["sseq"][0][0][1].flatten.include?("rel_list") 
+            name_hash = {related_words: "We're sorry! We couldn't find any related words."}
+        elsif !main_hash["meta"].flatten.include?("syns")  #if the api response does not include the words rel_list, syns, ants, or shortdef...
+            name_hash = {syns: "We're sorry! We couldn't find any synonyms."}                                      #...I know that the word requested does not have that specific attriubute that wasn't included
+        elsif !main_hash["meta"].flatten.include?("ants")   #since that word doesnt have either a syn,ant,rel_word,or short_def, I would have to set that attribute to "none"...
+            name_hash = {ants: "We're sorry! We couldn't find any antonyms."}                                       #... but still be able to return the attributes that do exist.
+                                                                                                        
+        elsif !main_hash.flatten.include?("shortdef")
+            name_hash = {short_def: "We're sorry! We couldn't find any definitions."}
+        else
+            rel_words = []
+                main_hash["def"][0]["sseq"][0][0][1]["rel_list"].each do |array| 
+                    array.each{|hash| hash.each {|key,value| rel_words << "#{value}"}}
+                end
+            
+            syn_words = []
+                main_hash["meta"]["syns"].each do |array|
+                    array.each{|word| syn_words << word}
+                end
 
-        rel_words = []
-        main_hash["def"][0]["sseq"][0][0][1]["rel_list"].each do |array| 
-            array.each{|hash| hash.each {|key,value| rel_words << "#{value}"}}
-        end
-        
-        syn_words = []
-        main_hash["meta"]["syns"].each do |array|
-            array.each{|word| syn_words << word}
-        end
+            ant_words = []
+                main_hash["meta"]["ants"].each do |word| #
+                ant_words << word
+                end
 
-        ant_words = []
-        main_hash["meta"]["ants"][0].each do |word|
-         ant_words << word
+            name_hash = {name: main_hash["meta"]["id"], syns: syn_words.join(", "),
+            ants: ant_words.join(", "),
+            related_words: rel_words.join(", "), 
+            short_def: main_hash["shortdef"][0] 
+            } 
+            
         end
-        
-        name_hash = {name: main_hash["meta"]["id"], syns: syn_words.join(", "),
-        ants: ant_words.join(", "),
-        related_words: rel_words.join(", "), 
-        short_def: main_hash["shortdef"][0] 
-        }
-        binding.pry
         Word.new(name_hash)
+         
     end
-    
-    
+   
+   
 
 end
-# def valid_word?
-    #      #     4. CHECK FOR VALIDITY. 
-    #      #@word =~ /(\d|\s)/  #the word is valid if it does not include spaces or a number
-    #                               #the word is valid if the regex does not return nil
-    #                                 #the word is valid if the thesarus does not return an empty array
-    # end
+
 #if valid_word?
             
         # else
