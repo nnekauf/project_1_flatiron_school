@@ -10,7 +10,9 @@ class Api
         #binding.pry
         if response.empty? #if the api does not return any results, its not a real word
             return false
-        #elsif response.flatten.include?("meta")#if api response does not have a meta class, it means they couldn't determine what the word was.
+        elsif @main_hash["meta"] == nil #if api response does not have a meta , it means they couldn't determine what the word was.
+            return false
+        elsif @main_hash["meta"]["id"] == nil #if api response has a meta hash but no id key, it means they couldn't determine what the word was.
             return false
         elsif @main_hash["meta"]["id"].to_s != "#{word}" #if api returns a different word than the one requested
             return false
