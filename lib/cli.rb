@@ -19,7 +19,12 @@ class Cli
     def get_word
         word = gets.strip
         new_word = Api.get_thesaurus_by_word(word)
-        self.word_options(new_word)
+        if new_word
+            self.word_options(new_word)
+        else
+            puts "That word was invalid, try again!"
+            self.main_menu
+        end
     end
 
     def word_options(new_word)
