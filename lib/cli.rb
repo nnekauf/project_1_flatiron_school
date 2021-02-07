@@ -13,6 +13,7 @@ class Cli
         puts "  You're thinking of a word... any word...."
         puts "  Make sure it's ONE word and spelled properly or else you'll bump into an error!"
         puts "  What's the Word? Enter it below."
+        self.get_word
     end
 
     def get_word
@@ -20,13 +21,6 @@ class Cli
         new_word = Api.get_thesaurus_by_word(word)
         #binding.pry
     end
-
-    # def valid_word?
-    #      #     4. CHECK FOR VALIDITY. 
-    #      #@word =~ /(\d|\s)/  #the word is valid if it does not include spaces or a number
-    #                               #the word is valid if the regex does not return nil
-    #                                 #the word is valid if the thesarus does not return an empty array
-    # end
 
     def return_word_info
         #if valid_word?
@@ -37,6 +31,14 @@ class Cli
         # end
     end
 
+    # def valid_word?
+    #      #     4. CHECK FOR VALIDITY. 
+    #      #@word =~ /(\d|\s)/  #the word is valid if it does not include spaces or a number
+    #                               #the word is valid if the regex does not return nil
+    #                                 #the word is valid if the thesarus does not return an empty array
+    # end
+
+    
     
     
     
