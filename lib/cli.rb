@@ -90,7 +90,7 @@ class Cli
     end
     
     def exit
-        puts "Thank you for using What's the Word Cli App!"
+        abort ("Thank you for using What's the Word Cli App!")
     end
     
     
