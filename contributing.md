@@ -15,4 +15,4 @@ overal function of the application.
 
 ### Does it follow the contributor covenant
 
-This repository has a [code of conduct](CODE_OF_CONDUCT.md).
+This repository has a [code of conduct](code_of_conduct.md).

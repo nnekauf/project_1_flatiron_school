@@ -34,7 +34,7 @@ To start the CLI app run
 
 ## Contributing
 
-Please read [CONTRIBUTING.md](CONTRIBUTING.md) for details on our code
+Please read [contributing.md](contributing.md) for details on our code
 of conduct, and the process for submitting pull requests to us.
 
 
