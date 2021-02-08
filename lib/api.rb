@@ -57,11 +57,7 @@ class Api
             name_hash[:short_def] = "We're sorry! We couldn't find any definitions."
         end
 
-        name_hash.each do |key, value|    
-            if value == "" || value == " "      
-                value = "We're sorry! Seems like this word may not have any!"
-            end
-        end
+        
         Word.new(name_hash)
     end
 
